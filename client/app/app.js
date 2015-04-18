@@ -4,7 +4,9 @@ angular.module('msMealPlannerApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ui.router'
+  'btford.socket-io',
+  'ui.router',
+  'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

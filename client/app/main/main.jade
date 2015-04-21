@@ -2,25 +2,33 @@ div(ng-include='"components/navbar/navbar.html"')
 
 header#banner.hero-unit
   .container
-    h1 'Allo, 'Allo!
+    h1 "Welcome to the big mama cookbook!"
     p.lead Kick-start your next web app with Angular Fullstack
 
 .container
   .row
     .col-lg-12
-      h1.page-header Features:
-      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
+      .jumbotron
+        h4.page-header Filters
+      h3.page-header Recipes
+      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='recipe in recipes')
         li
-          a(href='#', tooltip='{{thing.info}}')
-            | {{thing.name}}
-            button.close(type='button', ng-click='deleteThing(thing)') ×
+          a(href='#')
+            | {{recipe.name}}
 
-  form.thing-form
-    label Syncs in realtime across clients
-    p.input-group
-      input.form-control(type='text', placeholder='Add a new thing here.', ng-model='newThing')
-      span.input-group-btn
-        button.btn.btn-primary(type='submit', ng-click='addThing()') Add New
+    br
+
+    form.form-horizontal.recipe-form
+      .form-group
+        label.control-label.col-xs-2 Name
+        .col-xs-4
+          input.form-control(type='text', placeholder='name')
+      .form-group
+        label.control-label.col-xs-2 Description
+        .col-xs-4
+          input.form-control(type='textarea', placeholder='description')
+
+      button.btn.btn-primary.pull-right(type='submit', ng-click='addRecipe()') Add New
 
 
 footer.footer

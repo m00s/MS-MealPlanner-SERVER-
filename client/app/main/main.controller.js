@@ -1,27 +1,23 @@
 'use strict';
 
 angular.module('msMealPlannerApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, $http) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+    $scope.recipes = [];
+
+    $http.get('/api/recipes').success(function(awesomeThings) {
+      $scope.recipes = awesomeThings;
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addRecipe = function() {
+      if($scope.newRecipe === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
+      $http.post('/api/recipes', { name: $scope.newThing });
       $scope.newThing = '';
     };
 
     $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+      $http.delete('/api/recipes/' + thing._id);
     };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
   });

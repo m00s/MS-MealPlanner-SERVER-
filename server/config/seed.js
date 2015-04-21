@@ -5,8 +5,10 @@
 
 'use strict';
 
+var Recipe = require('../api/recipe/recipe.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var mongoose = require('mongoose');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -27,6 +29,27 @@ Thing.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  });
+});
+
+Recipe.find({}).remove(function() {
+  Recipe.create({
+    name: 'Pasta alla carbonara',
+    owner: '55366e779ab9b28305ebbb07',
+    title: 'Pasta alla carbonara',
+    minutes: 30,
+    description: 'Metti su l\'acqua e butta la pasta',
+    people: 4,
+    type: 'Primo',
+    image: '',
+    ingredients: [{ name: 'Pasta', qta: '500gr' },{name: 'uova', qta:'6'}],
+    tag: ['pasta','primo','uova'],
+    ateAt: [],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }, function(data) {
+    console.log('DATA:',data);
+    console.log('finished populating recipes');
   });
 });
 

@@ -14,7 +14,7 @@ var RecipeSchema = new Schema({
   image: String,
   ingredients: [{ name: String, qta: String }],
   tag: [String],
-  atedAt: [Date],
+  ateAt: [Date],
   createdAt: Date,
   updatedAt: Date
 });

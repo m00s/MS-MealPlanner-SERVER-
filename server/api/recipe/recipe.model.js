@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    timestamps = require('mongoose-timestamp'),
     Schema = mongoose.Schema;
 
 var RecipeSchema = new Schema({
@@ -14,9 +15,12 @@ var RecipeSchema = new Schema({
   image: String,
   ingredients: [{ name: String, qta: String }],
   tag: [String],
-  ateAt: [Date],
-  createdAt: Date,
-  updatedAt: Date
+  ateAt: [Date]
+});
+
+RecipeSchema.plugin(timestamps, {
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

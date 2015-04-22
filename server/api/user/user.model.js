@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var timestamps = require('mongoose-timestamp');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
@@ -145,5 +146,10 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   }
 };
+
+UserSchema.plugin(timestamps, {
+  createdAt: 'created_at',
+  updatedAt: 'updated_at'
+});
 
 module.exports = mongoose.model('User', UserSchema);

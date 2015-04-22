@@ -1,0 +1,24 @@
+form.form-horizontal.recipe-form
+  .form-group
+    label.control-label.col-xs-2 Name
+    .col-xs-4
+      input.form-control(type='text', placeholder='name')
+  .form-group
+    label.control-label.col-xs-2 Title
+    .col-xs-4
+      input.form-control(type='text', placeholder='title')
+  .form-group
+    label.control-label.col-xs-2 Description
+    .col-xs-4
+      input.form-control(type='textarea', placeholder='description')
+  .form-group
+    label.control-label.col-xs-2 People
+    .col-xs-4
+      input.form-control(type='text', placeholder='peole')
+  .form-group
+    label.control-label.col-xs-2 Type
+    .col-xs-4
+      select.form-control(ng-model='recipe.type', ng-options='type in types')
+        option(value="")
+
+  button.btn.btn-primary.pull-right(type='submit', ng-click='addRecipe()') Add New

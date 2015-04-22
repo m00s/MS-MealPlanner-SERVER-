@@ -1,0 +1,20 @@
+.container
+  table.table.table-striped
+    thead
+      tr
+        th(st-sort='name') Name
+        th(st-sort='type') Type
+        th(st-sort='minutes') Minutes
+        th(st-sort='people') People
+      tr
+        th(colspan='4')
+          input.form-control(st-search='', placeholder='search', type='text')
+    tbody
+      tr(ng-repeat='r in recipeCollection')
+        td {{r.name}}
+        td {{r.type}}
+        td {{r.minutes}}
+        td {{r.people}}
+        td
+          button.btn.btn-sm.btn-danger(type='button', ng-click='deleteRecipe(r)')
+            i.glyphicon.glyphicon-remove-circle

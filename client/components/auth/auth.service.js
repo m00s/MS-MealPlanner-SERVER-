@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.auth', ['ngResource'])
   .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
     var currentUser = {};
     if($cookieStore.get('token')) {

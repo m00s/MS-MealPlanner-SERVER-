@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.admin', [])
   .config(function ($stateProvider) {
     $stateProvider
       .state('admin', {

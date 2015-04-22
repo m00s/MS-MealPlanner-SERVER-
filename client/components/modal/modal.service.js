@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.modal', [])
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

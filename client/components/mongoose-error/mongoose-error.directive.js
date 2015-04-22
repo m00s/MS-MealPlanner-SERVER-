@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.mongoose', [])
   .directive('mongooseError', function () {
     return {
       restrict: 'A',

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.account')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};

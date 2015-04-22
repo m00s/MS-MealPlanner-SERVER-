@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular.module('msMealPlannerApp.navbar', [
+  'msMealPlannerApp.auth'
+])
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [];
 

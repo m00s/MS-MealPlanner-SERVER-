@@ -6,7 +6,13 @@ angular.module('msMealPlannerApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'msMealPlannerApp.recipe',
+  'msMealPlannerApp.navbar',
+  'msMealPlannerApp.account',
+  'msMealPlannerApp.admin',
+  'msMealPlannerApp.modal',
+  'msMealPlannerApp.mongoose'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

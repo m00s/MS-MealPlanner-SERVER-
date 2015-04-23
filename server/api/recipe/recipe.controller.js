@@ -5,7 +5,9 @@ var Recipe = require('./recipe.model');
 
 // Get list of recipes
 exports.index = function(req, res) {
-  Recipe.find(function (err, recipes) {
+  var ownerFilter = req.params.id ? {'owner': req.params.user_id} : {};
+
+  Recipe.find(ownerFilter, function (err, recipes) {
     if(err) { return handleError(res, err); }
     return res.json(200, recipes);
   });
@@ -22,7 +24,10 @@ exports.show = function(req, res) {
 
 // Creates a new recipe in the DB.
 exports.create = function(req, res) {
-  Recipe.create(req.body, function(err, recipe) {
+  var recipe = req.body;
+  recipe.owner = req.user._id;
+
+  Recipe.create(recipe, function(err, recipe) {
     if(err) { return handleError(res, err); }
     return res.json(201, recipe);
   });

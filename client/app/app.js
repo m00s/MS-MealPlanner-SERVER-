@@ -11,7 +11,6 @@ angular.module('msMealPlannerApp', [
   'msMealPlannerApp.navbar',
   'msMealPlannerApp.account',
   'msMealPlannerApp.admin',
-  'msMealPlannerApp.modal',
   'msMealPlannerApp.mongoose'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider) {

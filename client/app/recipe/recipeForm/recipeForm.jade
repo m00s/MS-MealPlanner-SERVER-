@@ -1,24 +1,38 @@
-form.form-horizontal.recipe-form
-  .form-group
-    label.control-label.col-xs-2 Name
-    .col-xs-4
-      input.form-control(type='text', placeholder='name')
-  .form-group
-    label.control-label.col-xs-2 Title
-    .col-xs-4
-      input.form-control(type='text', placeholder='title')
-  .form-group
-    label.control-label.col-xs-2 Description
-    .col-xs-4
-      input.form-control(type='textarea', placeholder='description')
-  .form-group
-    label.control-label.col-xs-2 People
-    .col-xs-4
-      input.form-control(type='text', placeholder='peole')
-  .form-group
-    label.control-label.col-xs-2 Type
-    .col-xs-4
-      select.form-control(ng-model='recipe.type', ng-options='type in types')
-        option(value="")
-
-  button.btn.btn-primary.pull-right(type='submit', ng-click='addRecipe()') Add New
+.container
+  form.form-horizontal.recipe-form
+    .col-lg-12
+      .form-group
+        label.control-label.col-xs-2 Name
+        .col-xs-6
+          input.form-control(type='text', placeholder='name', ng-model='recipe.name', required)
+      .form-group
+        label.control-label.col-xs-2 Title
+        .col-xs-6
+          input.form-control(type='text', placeholder='title', ng-model='recipe.title', required)
+      .form-group
+        label.control-label.col-xs-2 Description
+        .col-xs-6
+          textarea.form-control(placeholder='description', rows=8, cols=50, ng-model='recipe.description')
+      .form-group
+        label.control-label.col-xs-2 People
+        .col-xs-6
+          input.form-control(type='number', placeholder='people', min=1, max=8, ng-model='recipe.people', required)
+      .form-group
+        label.control-label.col-xs-2 Type
+        .col-xs-6
+          select.form-control(ng-model='recipe.type', ng-options='type for type in types', required)
+      .form-group
+        label.control-label.col-xs-2 Ingredients
+        .col-xs-6
+          .input-group
+            input.form-control(type='text', placeholder='name', ng-model='ingredient.name', required)
+            span.input-group-btn.doubled-input-group
+              input.form-control(type='text', placeholder='quantity', ng-model='ingredient.qta', required)
+              button.btn.btn-info(type='button', ng-click='addIngredient()', ng-disabled='!ingredient.name || !ingredient.qta') Add
+          ul.list-group
+            li.list-group-item.clearfix(ng-repeat='i in ingredients') {{i.name}}
+              span
+                em &nbsp; - ({{i.qta}})
+              span.pull-right
+                button.btn.btn-xs.btn-danger(type='button', ng-click='removeIngredient(i)')
+                  span.glyphicon.glyphicon-trash

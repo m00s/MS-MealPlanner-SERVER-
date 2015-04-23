@@ -1,21 +1,43 @@
 'use strict';
 
 angular.module('msMealPlannerApp')
-  .directive('recipeForm', function () {
+  .directive('recipeForm', function (Recipe) {
     return {
       templateUrl: 'app/recipe/recipeForm/recipeForm.html',
       restrict: 'EA',
       scope: {
-        recipe: '='
       },
       link: function (scope) {
-        // TODO need an addRecipe() method
-
         scope.types = ['antipasto','primo','secondo','contorno','dessert'];
+        scope.ingredients = [];
+        scope.ingredient = {};
+
+        scope.addIngredient = function() {
+          scope.ingredients.push(currentIngredient());
+          resetCurrentIngredient();
+        };
+
+        scope.removeIngredient = function (ing) {
+          _.remove(scope.ingredients, ing);
+        };
+
+        function currentIngredient() {
+          return {
+            'name': scope.ingredient.name,
+            'qta': scope.ingredient.qta
+          };
+        }
+
+        function resetCurrentIngredient() {
+          scope.ingredient.name = scope.ingredient.qta = "";
+        }
 
         scope.addRecipe = function() {
           // TODO to restangularize a recipe obj to send the POST
-          console.log('Implement me');
+
+          scope.recipe.ingredients = scope.ingredients;
+          Recipe.post(scope.recipe);
+          console.log('Recipe added');
         };
       }
     };

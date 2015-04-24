@@ -19,9 +19,11 @@ Recipe.find({}).remove(function() {
     people: 4,
     type: 'Primo',
     image: '',
+    difficulty: 'easy',
     ingredients: [{ name: 'Pasta', qta: '500gr' },{name: 'uova', qta:'6'}],
     tag: ['pasta','primo','uova'],
     ateAt: [],
+    price: 'low',
     createdAt: new Date(),
     updatedAt: new Date()
   }, function(data) {

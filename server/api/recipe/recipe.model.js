@@ -13,8 +13,10 @@ var RecipeSchema = new Schema({
   people: Number,
   type: String,
   image: String,
+  difficulty: String,
   ingredients: [{ name: String, qta: String }],
   tag: [String],
+  price: String,
   ateAt: [Date]
 });
 

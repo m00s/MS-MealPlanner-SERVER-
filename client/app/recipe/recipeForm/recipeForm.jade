@@ -36,3 +36,11 @@
               span.pull-right
                 button.btn.btn-xs.btn-danger(type='button', ng-click='removeIngredient(i)')
                   span.glyphicon.glyphicon-trash
+      .form-group
+        label.control-label.col-xs-2 Difficulty
+        .col-xs-6
+          select.form-control(ng-model='recipe.difficulty', ng-options='diff for diff in difficulty', required)
+      .form-group
+        label.control-label.col-xs-2 Price
+        .col-xs-6
+          select.form-control(ng-model='recipe.price', ng-options='price for price in prices', required)

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('msMealPlannerApp')
-  .controller('MainCtrl', function ($scope, $modal) {
+  .controller('MainCtrl', function ($scope, $modal, Auth) {
 
     var templateUrl = 'modal.html';
 
@@ -34,4 +34,6 @@ angular.module('msMealPlannerApp')
 
     $scope.viewRecipe = function() {
     };
+
+    $scope.isLoggedIn = Auth.isLoggedIn;
   });

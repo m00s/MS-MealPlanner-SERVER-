@@ -9,6 +9,8 @@ angular.module('msMealPlannerApp')
       },
       link: function (scope) {
         scope.types = ['antipasto','primo','secondo','contorno','dessert'];
+        scope.difficulty = ['easy','medium','hard'];
+        scope.prices = ['low','medium','high'];
         scope.ingredients = [];
         scope.ingredient = {};
 
@@ -29,7 +31,7 @@ angular.module('msMealPlannerApp')
         }
 
         function resetCurrentIngredient() {
-          scope.ingredient.name = scope.ingredient.qta = "";
+          scope.ingredient.name = scope.ingredient.qta = '';
         }
 
         scope.addRecipe = function() {

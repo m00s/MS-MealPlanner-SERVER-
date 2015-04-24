@@ -8,9 +8,9 @@ header#banner.hero-unit
 .container
   .row
     .col-lg-12
-      a.btn.btn-xs.btn-info.pull-right(ng-click='addRecipe()')
+      a.btn.btn-link.btn-lg.pull-right(ng-click='addRecipe()', ng-if='isLoggedIn()')
         span.glyphicons.glyphicon-plus
-        | &nbsp; New
+        | &nbsp; Add new recipe
       h3.page-header Recipes
       recipe-table
     br

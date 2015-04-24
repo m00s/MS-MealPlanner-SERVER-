@@ -7,7 +7,9 @@ angular.module('msMealPlannerApp')
       restrict: 'EA',
       link: function (scope) {
         scope.deleteRecipe = function(recipe) {
-          recipe.remove();
+          if(window.confirm('Are you sure you want to remove this recipe?')){
+            recipe.remove();
+          }
         };
 
         var init = function(){

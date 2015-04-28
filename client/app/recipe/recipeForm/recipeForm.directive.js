@@ -38,7 +38,9 @@ angular.module('msMealPlannerApp')
           // TODO to restangularize a recipe obj to send the POST
 
           scope.recipe.ingredients = scope.ingredients;
-          Recipe.post(scope.recipe);
+          Recipe.post(scope.recipe).then(function(data){
+            console.log('added\n', angular.toJson(data));
+          });
           console.log('Recipe added');
         };
       }

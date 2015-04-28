@@ -23,11 +23,11 @@
           select.form-control(ng-model='recipe.type', ng-options='type for type in types', required)
       .form-group
         label.control-label.col-xs-2 Ingredients
-        .col-xs-6
+        .col-xs-5
           .input-group
-            input.form-control(type='text', placeholder='name', ng-model='ingredient.name', required)
+            input.form-control(type='text', placeholder='name', ng-model='ingredient.name')
             span.input-group-btn.doubled-input-group
-              input.form-control(type='text', placeholder='quantity', ng-model='ingredient.qta', required)
+              input.form-control(type='text', placeholder='quantity', ng-model='ingredient.qta')
               button.btn.btn-info(type='button', ng-click='addIngredient()', ng-disabled='!ingredient.name || !ingredient.qta') Add
           ul.list-group
             li.list-group-item.clearfix(ng-repeat='i in ingredients') {{i.name}}
@@ -38,9 +38,11 @@
                   span.glyphicon.glyphicon-trash
       .form-group
         label.control-label.col-xs-2 Difficulty
-        .col-xs-6
+        .col-xs-2
           select.form-control(ng-model='recipe.difficulty', ng-options='diff for diff in difficulty', required)
-      .form-group
         label.control-label.col-xs-2 Price
-        .col-xs-6
+        .col-xs-2
           select.form-control(ng-model='recipe.price', ng-options='price for price in prices', required)
+      .form-group
+        .col-xs-8
+          button.btn.btn-primary.pull-right(type='submit', ng-click='addRecipe()', style="") Add recipe

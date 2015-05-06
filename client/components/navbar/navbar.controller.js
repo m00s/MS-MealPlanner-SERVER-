@@ -4,7 +4,12 @@ angular.module('msMealPlannerApp.navbar', [
   'msMealPlannerApp.auth'
 ])
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [];
+    $scope.menu = [
+      {
+        title: 'Add recipe',
+        link: '/new'
+      }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

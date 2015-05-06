@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('msMealPlannerApp')
-  .directive('recipeForm', function (Recipe) {
+  .directive('recipeForm', function (Recipe, $location) {
     return {
       templateUrl: 'app/recipe/recipeForm/recipeForm.html',
       restrict: 'EA',
@@ -38,13 +38,15 @@ angular.module('msMealPlannerApp')
         }
 
         scope.addRecipe = function() {
-          // TODO to restangularize a recipe obj to send the POST
+          // TODO Growl notification success?
 
           scope.recipe.ingredients = scope.ingredients;
           Recipe.post(scope.recipe).then(function(data){
             console.log('added\n', angular.toJson(data));
+            $location.path('/');
           });
           console.log('Recipe added');
+
         };
       }
     };

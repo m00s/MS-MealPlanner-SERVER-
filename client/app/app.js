@@ -9,6 +9,7 @@ angular.module('msMealPlannerApp', [
   'ui.bootstrap',
   'msMealPlannerApp.recipe',
   'msMealPlannerApp.navbar',
+  'msMealPlannerApp.footer',
   'msMealPlannerApp.account',
   'msMealPlannerApp.admin',
   'msMealPlannerApp.mongoose'
@@ -21,6 +22,12 @@ angular.module('msMealPlannerApp', [
     $httpProvider.interceptors.push('authInterceptor');
     RestangularProvider.setBaseUrl('api');
     RestangularProvider.setRestangularFields({id: '_id'});
+  })
+
+  .constant({
+    templates: {
+      'footer': 'components/footer/footer.html'
+    }
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {

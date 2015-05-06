@@ -8,19 +8,7 @@ header#banner.hero-unit
 .container
   .row
     .col-lg-12
-      a.btn.btn-link.btn-lg.pull-right(ng-click='addRecipe()', ng-if='isLoggedIn()')
-        span.glyphicons.glyphicon-plus
-        | &nbsp; Add new recipe
       h3.page-header Recipes
       recipe-table
-    br
 
-
-footer.footer
-  .container
-    p
-      | Scaffolded with Angular Fullstack v2.0.13
-      = ' | '
-      a(href='https://twitter.com/___Sarto') @___Sarto
-      = ' | '
-      a(href='https://github.com/m00s/MS-MealPlanner/issues') Issues
+ms-footer

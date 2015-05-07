@@ -21,3 +21,15 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #A20B14;
 }
+
+
+/* Override growl notification style */
+
+.growl-container.growl-fixed {
+  max-width: 90% !important;
+}
+
+.growl-container.growl-fixed.top-center {
+  margin-left: auto !important;
+  left: auto !important;
+}

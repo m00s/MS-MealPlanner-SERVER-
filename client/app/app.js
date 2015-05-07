@@ -7,6 +7,7 @@ angular.module('msMealPlannerApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
+  'angular-growl',
   'msMealPlannerApp.recipe',
   'msMealPlannerApp.navbar',
   'msMealPlannerApp.footer',
@@ -14,7 +15,7 @@ angular.module('msMealPlannerApp', [
   'msMealPlannerApp.admin',
   'msMealPlannerApp.mongoose'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider, growlProvider) {
     $urlRouterProvider
       .otherwise('/');
 
@@ -22,6 +23,11 @@ angular.module('msMealPlannerApp', [
     $httpProvider.interceptors.push('authInterceptor');
     RestangularProvider.setBaseUrl('api');
     RestangularProvider.setRestangularFields({id: '_id'});
+
+    growlProvider.onlyUniqueMessages(true);
+    growlProvider.globalTimeToLive(5000);
+    growlProvider.globalDisableCountDown(true);
+    growlProvider.globalPosition('top-center');
   })
 
   .constant({

@@ -45,6 +45,6 @@
         label.control-label.col-xs-2 Price
         .col-xs-2
           select.form-control(ng-model='recipe.price', ng-options='price for price in prices', required)
-      .form-group
+      .form-group(ng-hide='edit')
         .col-xs-8
           button.btn.btn-primary.pull-right(type='submit', ng-click='addRecipe()', style="") Add recipe

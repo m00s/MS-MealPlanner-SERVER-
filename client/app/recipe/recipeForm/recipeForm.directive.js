@@ -6,9 +6,14 @@ angular.module('msMealPlannerApp')
       templateUrl: 'app/recipe/recipeForm/recipeForm.html',
       restrict: 'EA',
       scope: {
-        title: '@'
+        title: '@',
+        recipe: '=',
+        edit: '@'
       },
       link: function (scope, elem, attr) {
+        if(!attr.recipe)
+          scope.recipe = {};
+
         scope.title = attr.title | 'Recipe';
 
         scope.types = ['antipasto','primo','secondo','contorno','dessert'];

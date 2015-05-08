@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('msMealPlannerApp')
-  .directive('recipeTable', ['Recipe', 'growl', function (Recipe, growl) {
+  .directive('recipeTable', ['Recipe', 'growl','$state', function (Recipe, growl, $state) {
     return {
       templateUrl: 'app/recipe/recipeTable/recipeTable.html',
       restrict: 'EA',
@@ -20,6 +20,10 @@ angular.module('msMealPlannerApp')
               scope.recipeCollection = data;
             });
         }
+
+        scope.editRecipe = function (recipe) {
+          $state.go('/recipes/edit/', {id : recipe._id});
+        };
 
         scope.deleteRecipe = function(recipe) {
           if(window.confirm('Are you sure you want to remove this recipe?')){

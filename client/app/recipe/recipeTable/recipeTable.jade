@@ -17,5 +17,7 @@
         td {{r.minutes}}
         td {{r.people}}
         td
+          a.btn.btn-sm.btn-info(type='button', ui-sref="edit({id:r._id})")
+            i.glyphicon.glyphicon-pencil
           button.btn.btn-sm.btn-danger(type='button', ng-click='deleteRecipe(r)')
             i.glyphicon.glyphicon-remove-circle

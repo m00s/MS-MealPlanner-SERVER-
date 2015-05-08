@@ -12,7 +12,7 @@ angular.module('msMealPlannerApp.navbar', [
         scope.menu = [
           {
             title: 'Add recipe',
-            link: '/new'
+            link: '/recipes/new'
           }
         ];
 

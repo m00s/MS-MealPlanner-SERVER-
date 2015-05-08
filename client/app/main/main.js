@@ -3,7 +3,7 @@
 angular.module('msMealPlannerApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('main', {
+      .state('/', {
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'

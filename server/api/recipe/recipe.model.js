@@ -25,4 +25,6 @@ RecipeSchema.plugin(timestamps, {
   updatedAt: 'updated_at'
 });
 
+RecipeSchema.set('versionKey', false);
+
 module.exports = mongoose.model('Recipe', RecipeSchema);

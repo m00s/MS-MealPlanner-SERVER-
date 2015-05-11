@@ -17,7 +17,7 @@ Recipe.find({}).remove(function() {
     minutes: 30,
     description: 'Metti su l\'acqua e butta la pasta',
     people: 4,
-    type: 'Primo',
+    type: 'primo',
     image: '',
     difficulty: 'easy',
     ingredients: [{ name: 'Pasta', qta: '500gr' },{name: 'uova', qta:'6'}],

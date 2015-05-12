@@ -3,13 +3,10 @@
   table.table.table-striped
     thead
       tr
-        th(st-sort='name') Name
-        th(st-sort='type') Type
-        th(st-sort='minutes') Minutes
-        th(st-sort='people') People
-      tr
-        th(colspan='4')
-          input.form-control(st-search='', placeholder='search', type='text')
+        th Name
+        th Type
+        th Minutes
+        th People
     tbody
       tr(ng-repeat='r in recipeCollection')
         td {{r.name}}

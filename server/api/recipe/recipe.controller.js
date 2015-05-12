@@ -40,6 +40,7 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!recipe) { return res.send(404); }
     var updated = _.merge(recipe, req.body);
+    updated.ingredients = req.body.ingredients;
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, recipe);

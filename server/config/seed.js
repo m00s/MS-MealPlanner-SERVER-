@@ -26,8 +26,23 @@ Recipe.find({}).remove(function() {
     price: 'low',
     createdAt: new Date(),
     updatedAt: new Date()
+  }, {
+    name: 'Risotto agli asparagi',
+    owner: '55366e779ab9b28305ebbb07',
+    title: 'Risotto agli asparagi',
+    minutes: 45,
+    description: 'Metti su l\'acqua e butta il riso',
+    people: 4,
+    type: 'primo',
+    image: '',
+    difficulty: 'medium',
+    ingredients: [{ name: 'Riso', qta: '400gr' },{name: 'asparagi', qta:'6'}],
+    tag: ['riso','primo','asparagi'],
+    ateAt: [],
+    price: 'medium',
+    createdAt: new Date(),
+    updatedAt: new Date()
   }, function(data) {
-    console.log('DATA:',data);
     console.log('finished populating recipes');
   });
 });

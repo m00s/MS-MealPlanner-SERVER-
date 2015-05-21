@@ -1,29 +1,23 @@
 'use strict';
 
-angular.module('msMealPlannerApp.calendar', ['ui.calendar'])
+angular.module('msMealPlannerApp.calendar', ['ui.calendar', 'msMealPlannerApp.event'])
   .controller('CalendarCtrl', calendarFn);
 
-calendarFn.$inject = ['$scope'];
+calendarFn.$inject = ['$scope', 'Event'];
 
-function calendarFn($scope) {
+function calendarFn($scope, Event) {
 
   $scope.eventCollection = {
-    events: [
-      {
-        title: 'Pranzo: Riso',
-        start: '2015-05-04T13:00Z',
-        color: 'blue',
-        backgroundColor: 'dark',
-        textColor: 'white'
-      },
-      {
-        title: 'Cena: Pizza',
-        start: '2015-05-04T20:00Z',
-        color: 'red',
-        backgroundColor: 'white',
-        textColor: 'black'
-      }
-    ]
+    events: function(start, end, timezone, cb) {
+      Event.getList()
+        .then(function(response){
+          var events = [];
+          angular.forEach(response, function(value) {
+            events.push(value.data);
+          });
+          cb(events);
+        });
+    }
   };
 
   $scope.uiConfig = {

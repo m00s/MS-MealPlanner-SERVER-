@@ -11,16 +11,19 @@ function calendarFn($scope) {
     events: [
       {
         title: 'Pranzo: Riso',
-        start: '2015-05-04'
+        start: '2015-05-04T13:00Z',
+        color: 'blue',
+        backgroundColor: 'dark',
+        textColor: 'white'
       },
       {
         title: 'Cena: Pizza',
-        start: '2015-05-04'
+        start: '2015-05-04T20:00Z',
+        color: 'red',
+        backgroundColor: 'white',
+        textColor: 'black'
       }
-    ],
-    color: 'blue',
-    backgroundColor: 'dark',
-    textColor: 'white'
+    ]
   };
 
   $scope.uiConfig = {

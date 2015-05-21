@@ -13,7 +13,8 @@ angular.module('msMealPlannerApp', [
   'msMealPlannerApp.footer',
   'msMealPlannerApp.account',
   'msMealPlannerApp.admin',
-  'msMealPlannerApp.mongoose'
+  'msMealPlannerApp.mongoose',
+  'msMealPlannerApp.calendar'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, RestangularProvider, growlProvider) {
     $urlRouterProvider

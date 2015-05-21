@@ -9,7 +9,7 @@ function recipeForm(Recipe, growl) {
     restrict: 'EA',
     scope: {
       title: '@',
-      recipe: '=',
+      recipe: '=?',
       edit: '@'
     },
     link: link

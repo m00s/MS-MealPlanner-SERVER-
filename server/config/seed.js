@@ -7,6 +7,7 @@
 
 var Recipe = require('../api/recipe/recipe.model');
 var User = require('../api/user/user.model');
+var Event = require('../api/event/event.model');
 var mongoose = require('mongoose');
 
 Recipe.find({}).remove(function() {
@@ -61,6 +62,31 @@ User.find({}).remove(function() {
     password: 'admin'
   }, function() {
       console.log('finished populating users');
+    }
+  );
+});
+
+Event.find({}).remove(function () {
+  Event.create({
+      owner: '55366e779ab9b28305ebbb07',
+      data: {
+        title: 'Pranzo: Riso',
+        start: '2015-05-04T13:00Z',
+        color: 'blue',
+        backgroundColor: 'dark',
+        textColor: 'white'
+      }
+    }, {
+      owner: '55366e779ab9b28305ebbb07',
+      data: {
+        title: 'Cena: Pizza',
+        start: '2015-05-04T20:00Z',
+        color: 'red',
+        backgroundColor: 'white',
+        textColor: 'black'
+      }
+    }, function() {
+      console.log('finished populating events');
     }
   );
 });

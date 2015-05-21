@@ -1,48 +1,51 @@
 'use strict';
 
 angular.module('msMealPlannerApp.calendar')
-  .controller('CalendarCtrl', function ($scope) {
+  .controller('CalendarCtrl', calendarFn);
 
-    $scope.eventCollection = {
-      events: [
-        {
-          title: 'Pranzo: Riso',
-          start: '2015-05-04'
-        },
-        {
-          title: 'Cena: Pizza',
-          start: '2015-05-04'
-        }
-      ],
-      color: 'blue',
-      backgroundColor: 'dark',
-      textColor: 'white'
-    };
+calendarFn.$inject = ['$scope'];
 
-    $scope.uiConfig = {
-      calendar:{
-        height: 550,
-        header:{
-          left: 'month basicWeek basicDay',
-          center: 'title',
-          right: 'today prev,next'
-        },
-        dayClick: alertEventOnClick,
-        eventDrop: alertOnDrop,
-        eventResize: alertOnResize
+function calendarFn($scope) {
+
+  $scope.eventCollection = {
+    events: [
+      {
+        title: 'Pranzo: Riso',
+        start: '2015-05-04'
+      },
+      {
+        title: 'Cena: Pizza',
+        start: '2015-05-04'
       }
-    };
+    ],
+    color: 'blue',
+    backgroundColor: 'dark',
+    textColor: 'white'
+  };
 
-    function alertEventOnClick() {
-      console.log('alertEventOnClick');
+  $scope.uiConfig = {
+    calendar:{
+      height: 550,
+      header:{
+        left: 'month basicWeek basicDay',
+        center: 'title',
+        right: 'today prev,next'
+      },
+      dayClick: alertEventOnClick,
+      eventDrop: alertOnDrop,
+      eventResize: alertOnResize
     }
+  };
 
-    function alertOnDrop() {
-      console.log('alertOnDrop()');
-    }
+  function alertEventOnClick() {
+    console.log('alertEventOnClick');
+  }
 
-    function alertOnResize() {
-      console.log('alertOnResize()');
-    }
+  function alertOnDrop() {
+    console.log('alertOnDrop()');
+  }
 
-  });
+  function alertOnResize() {
+    console.log('alertOnResize()');
+  }
+}

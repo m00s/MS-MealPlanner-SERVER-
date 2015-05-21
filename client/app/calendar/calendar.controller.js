@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp.calendar')
+angular.module('msMealPlannerApp.calendar', ['ui.calendar'])
   .controller('CalendarCtrl', calendarFn);
 
 calendarFn.$inject = ['$scope'];

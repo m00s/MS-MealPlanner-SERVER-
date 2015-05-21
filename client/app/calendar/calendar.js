@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('msMealPlannerApp.calendar', ['ui.calendar'])
+angular.module('msMealPlannerApp.calendar')
   .config(function ($stateProvider) {
     $stateProvider
       .state('calendar', {

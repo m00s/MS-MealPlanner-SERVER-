@@ -13,6 +13,10 @@ angular.module('msMealPlannerApp.navbar', [
           {
             title: 'Add recipe',
             link: '/recipes/new'
+          },
+          {
+            title: 'Calendar',
+            link: '/calendar'
           }
         ];
 

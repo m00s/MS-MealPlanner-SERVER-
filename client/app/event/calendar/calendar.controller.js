@@ -3,9 +3,9 @@
 angular.module('msMealPlannerApp.calendar', ['ui.calendar', 'msMealPlannerApp.event'])
   .controller('CalendarCtrl', calendarFn);
 
-calendarFn.$inject = ['$scope', 'Event'];
+calendarFn.$inject = ['$scope', 'Event', '$modal', 'templates'];
 
-function calendarFn($scope, Event) {
+function calendarFn($scope, Event, $modal, templates) {
 
   $scope.eventCollection = {
     events: function(start, end, timezone, cb) {
@@ -21,7 +21,7 @@ function calendarFn($scope, Event) {
   };
 
   $scope.uiConfig = {
-    calendar:{
+    calendar: {
       height: 550,
       header:{
         left: 'month basicWeek basicDay',
@@ -34,8 +34,19 @@ function calendarFn($scope, Event) {
     }
   };
 
-  function alertEventOnClick() {
-    console.log('alertEventOnClick');
+  function alertEventOnClick(date) {
+
+    $modal.open({
+      animation: true,
+      templateUrl: templates.eventModal,
+      controller: 'ModalCtrl',
+      size: 'md',
+      resolve: {
+        date: function () {
+          return date;
+        }
+      }
+    });
   }
 
   function alertOnDrop() {

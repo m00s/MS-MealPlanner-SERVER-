@@ -5,7 +5,7 @@ angular.module('msMealPlannerApp.calendar')
     $stateProvider
       .state('calendar', {
         url: '/calendar',
-        templateUrl: 'app/calendar/calendar.html',
+        templateUrl: 'app/event/calendar/calendar.html',
         controller: 'CalendarCtrl'
       });
   });

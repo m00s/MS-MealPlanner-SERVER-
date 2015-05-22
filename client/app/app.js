@@ -34,7 +34,8 @@ angular.module('msMealPlannerApp', [
   .constant({
     templates: {
       'navbar': 'components/navbar/navbar.html',
-      'footer': 'components/footer/footer.html'
+      'footer': 'components/footer/footer.html',
+      'eventModal': 'app/event/modal/modal.html'
     }
   })
 

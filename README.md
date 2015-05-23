@@ -1,16 +1,21 @@
 MS-MealPlanner
 ===============
 
-A simple weekly meal planner made with love
+## Features
+
+- Manage (add/edit/remove) recipes
+- Use a calendar to plan your meals
+- Facebook / Twitter authentication
+
 
 ##Setup
 Clone the repo
 ```
 $ git clone git@github.com:m00s/MS-MealPlanner.git
 ```
-Make sure to have npm installed, then move to the repo dir and download dependencies issuing
+Make sure to have npm installed, then move to the project dir and resolve dependencies issuing
 ```
-$ cd <reponame> && npm install && bower install
+$ npm install && bower install
 ```
 
 ##Start the app

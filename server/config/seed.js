@@ -69,18 +69,22 @@ User.find({}).remove(function() {
 Event.find({}).remove(function () {
   Event.create({
       owner: '55366e779ab9b28305ebbb07',
+      recipe: '556322047802b6af04bf1169',
+      recipeTitle: 'Pasta alla carbonara',
       data: {
         title: 'Pranzo: Riso',
-        start: '2015-05-04T13:00Z',
+        start: new Date('2015-05-04'),
         color: 'blue',
         backgroundColor: 'dark',
         textColor: 'white'
       }
     }, {
       owner: '55366e779ab9b28305ebbb07',
+      recipe: '556322047802b6af04bf116c',
+      recipeTitle: 'Risotto agli asparagi',
       data: {
         title: 'Cena: Pizza',
-        start: '2015-05-04T20:00Z',
+        start: new Date('2015-05-04'),
         color: 'red',
         backgroundColor: 'white',
         textColor: 'black'

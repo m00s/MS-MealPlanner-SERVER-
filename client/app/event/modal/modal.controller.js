@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('msMealPlannerApp.calendar')
-  .controller('ModalCtrl', function ($scope, $modalInstance, $filter, date) {
+  .controller('ModalCtrl', function ($scope, $modalInstance, $filter, date, events, Recipe) {
+    $scope.events = events;
     $scope.inputDate = date._d;
-
     $scope.outputDate = $filter('date')($scope.inputDate, 'fullDate');
+    Recipe.getList().then(function (response) {
+      $scope.recipes = response.plain();
+    });
+
+    $scope.newEvent = {};
 
     $scope.close = function () {
       $modalInstance.close();
     };
 
-    $scope.close = function () {
+    $scope.submit = function () {
 
-      $modalInstance.close();
     };
 
     $scope.openDatepicker = function($event) {

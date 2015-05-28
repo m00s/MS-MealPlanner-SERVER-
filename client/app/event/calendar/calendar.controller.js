@@ -3,9 +3,9 @@
 angular.module('msMealPlannerApp.calendar', ['ui.calendar', 'msMealPlannerApp.event'])
   .controller('CalendarCtrl', calendarFn);
 
-calendarFn.$inject = ['$scope', 'Event', '$modal', 'templates'];
+calendarFn.$inject = ['$scope', 'Event', '$modal', 'templates', 'Restangular'];
 
-function calendarFn($scope, Event, $modal, templates) {
+function calendarFn($scope, Event, $modal, templates, Restangular) {
 
   $scope.eventCollection = {
     events: function(start, end, timezone, cb) {
@@ -34,18 +34,26 @@ function calendarFn($scope, Event, $modal, templates) {
     }
   };
 
-  function alertEventOnClick(date) {
+  function eventsOnDate(date){
+    return Restangular.one('events').get({'date': date});
+  }
 
-    $modal.open({
-      animation: true,
-      templateUrl: templates.eventModal,
-      controller: 'ModalCtrl',
-      size: 'md',
-      resolve: {
-        date: function () {
-          return date;
+  function alertEventOnClick(date) {
+    eventsOnDate(date._d).then(function (response) {
+      $modal.open({
+        animation: true,
+        templateUrl: templates.eventModal,
+        controller: 'ModalCtrl',
+        size: 'md',
+        resolve: {
+          date: function () {
+            return date;
+          },
+          events: function () {
+            return response.plain();
+          }
         }
-      }
+      });
     });
   }
 

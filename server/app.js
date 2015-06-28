@@ -1,6 +1,4 @@
-/**
- * Main application file
- */
+/* Main application file */
 
 'use strict';
 
@@ -34,4 +32,4 @@ server.listen(config.port, config.ip, function () {
 });
 
 // Expose app
-exports = module.exports = app;
+module.exports = app;

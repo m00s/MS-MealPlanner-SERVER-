@@ -16,7 +16,7 @@ angular.module('msMealPlannerApp.calendar')
     };
 
     $scope.submit = function () {
-
+      
     };
 
     $scope.openDatepicker = function($event) {

@@ -5,20 +5,28 @@
   .row
     .col-md-9.col-md-offset-1
         form.form-horizontal
-          .form-group
-            label.col-md-3.control-label Lunch
-            .col-md-9
-              input.form-control(type="text", placeholder="lunch", value="{{events[0].recipeTitle}}", ng-model="newEvent.lunch")
 
-          .form-group
-            .col-md-9
-              select.form-control(type="text", placeholder="lunch", value="{{events[0].recipeTitle}}")
-              select(ng-model="newEvent.lunch", ng-options="r._id as r.title for r in recipes")
+          .panel.panel-default
+            .panel-body
+              .form-group
+                label.col-md-3.control-label Lunch
+                .col-md-9
+                  input.form-control(type="text", placeholder="lunch", value="{{events[0].recipeTitle}}", ng-model="newEvent.lunch")
+              .form-group
+                .col-md-9.col-md-offset-3
+                  select.form-control(ng-model="newEvent.lunch", ng-options="r._id as r.title for r in recipes")
+                    option(value='', selected, disabled) Choose
 
-          .form-group
-            label.col-md-3.control-label Dinner
-            .col-md-9
-              input.form-control(type="text", placeholder="dinner", value="{{events[1].recipeTitle}}")
+          .panel.panel-default
+            .panel-body
+              .form-group
+                label.col-md-3.control-label Dinner
+                .col-md-9
+                  input.form-control(type="text", placeholder="dinner", value="{{events[1].recipeTitle}}", ng-model="newEvent.dinner")
+              .form-group
+                .col-md-9.col-md-offset-3
+                  select.form-control(ng-model="newEvent.dinner", ng-options="r._id as r.title for r in recipes")
+                    option(value='', selected, disabled) Choose
 
 .modal-footer
   button.btn.btn-warning(ng-click="close()") Cancel

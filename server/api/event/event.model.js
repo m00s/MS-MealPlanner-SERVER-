@@ -8,6 +8,7 @@ var EventSchema = new Schema({
   owner: Schema.Types.ObjectId,
   recipe: Schema.Types.ObjectId,
   recipeTitle: String,
+  meal: String,
   data: {
       id: Schema.Types.ObjectId,
       title: String,

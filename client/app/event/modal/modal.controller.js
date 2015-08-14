@@ -2,21 +2,20 @@
 
 angular.module('msMealPlannerApp.calendar')
   .controller('ModalCtrl', function ($scope, $modalInstance, $filter, date, events, Recipe) {
-    $scope.events = events;
+    $scope.events = organizeMeal(events);
     $scope.inputDate = date._d;
     $scope.outputDate = $filter('date')($scope.inputDate, 'fullDate');
     Recipe.getList().then(function (response) {
       $scope.recipes = response.plain();
     });
 
-    $scope.newEvent = {};
-
     $scope.close = function () {
       $modalInstance.close();
     };
 
     $scope.submit = function () {
-      
+      console.log('Event lunch:',$scope.events[0]);
+      console.log('Event dinner:',$scope.events[1]);
     };
 
     $scope.openDatepicker = function($event) {
@@ -28,6 +27,7 @@ angular.module('msMealPlannerApp.calendar')
     $scope.today = function() {
       $scope.outputDate = new Date();
     };
+
     $scope.today();
 
     $scope.clear = function () {
@@ -38,6 +38,21 @@ angular.module('msMealPlannerApp.calendar')
       formatYear: 'yy',
       startingDay: 1
     };
+
+    function organizeMeal(events) {
+      if(events.length){
+        if(events[0].meal === 'Lunch' && !events[1]){
+          events.push({});
+        }
+        else{
+          if(events[0].meal === 'Dinner'){
+            events.unshift({});
+          }
+        }
+      }
+
+      return events;
+    }
 
     $scope.getDayClass = function(date, mode) {
       if (mode === 'day') {

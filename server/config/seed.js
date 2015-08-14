@@ -71,9 +71,10 @@ Event.find({}).remove(function () {
       owner: '55366e779ab9b28305ebbb07',
       recipe: '556322047802b6af04bf1169',
       recipeTitle: 'Pasta alla carbonara',
+      meal: 'Lunch',
       data: {
-        title: 'Pranzo: Riso',
-        start: new Date('2015-05-04'),
+        title: 'Pranzo: Pasta',
+        start: new Date('2015-08-26'),
         color: 'blue',
         backgroundColor: 'dark',
         textColor: 'white'
@@ -82,9 +83,10 @@ Event.find({}).remove(function () {
       owner: '55366e779ab9b28305ebbb07',
       recipe: '556322047802b6af04bf116c',
       recipeTitle: 'Risotto agli asparagi',
+      meal: 'Dinner',
       data: {
-        title: 'Cena: Pizza',
-        start: new Date('2015-05-04'),
+        title: 'Cena: Risotto',
+        start: new Date('2015-08-22'),
         color: 'red',
         backgroundColor: 'white',
         textColor: 'black'

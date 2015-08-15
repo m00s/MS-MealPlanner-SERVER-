@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('msMealPlannerApp')
+angular
+  .module('msMealPlannerApp')
   .directive('recipeForm', ['Recipe', 'growl', recipeForm ]);
 
 function recipeForm(Recipe, growl) {
@@ -19,7 +20,7 @@ function recipeForm(Recipe, growl) {
 
   function link(scope, elem, attr) {
     if(!attr.recipe)
-      scope.recipe = {};
+      scope.recipe = {'ingredients': []};
 
     function init() {
       scope.title = attr.title || 'Recipe';

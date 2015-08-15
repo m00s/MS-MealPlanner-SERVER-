@@ -9,7 +9,7 @@ angular.module('msMealPlannerApp')
 
         function removeValue (array, id) {
           return _.reject(array, function(item) {
-            console.log('deleted:', id);
+            console.info('Deleted recipe:', id);
             return item._id === id;
           });
         }
@@ -20,10 +20,6 @@ angular.module('msMealPlannerApp')
               scope.recipeCollection = data;
             });
         }
-
-        scope.editRecipe = function (recipe) {
-          $state.go('/recipes/edit/', {id : recipe._id});
-        };
 
         scope.deleteRecipe = function(recipe) {
           if(window.confirm('Are you sure you want to remove this recipe?')){

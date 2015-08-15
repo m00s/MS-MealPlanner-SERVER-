@@ -1,7 +1,13 @@
-textarea {
-  resize: none;
-}
-
-.doubled-input-group {
-  width: 30%;
+.container {
+  h1 {
+    text-align: center;
+  }
+  form {
+    textarea {
+      resize: none;
+    }
+    .doubled-input-group {
+      width: 30%;
+    }
+  }
 }

@@ -1,37 +1,44 @@
 'use strict';
 
-angular.module('msMealPlannerApp.account')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
-    $scope.errors = {};
+angular
+  .module('msMealPlannerApp.account')
+  .controller('SignupCtrl', SignupCtrl);
 
-    $scope.register = function(form) {
-      $scope.submitted = true;
+SignupCtrl.$inject = ['Auth', '$location', '$window'];
 
-      if(form.$valid) {
-        Auth.createUser({
-          name: $scope.user.name,
-          email: $scope.user.email,
-          password: $scope.user.password
-        })
+function SignupCtrl(Auth, $location, $window) {
+  var vm = this;
+
+  vm.user = {};
+  vm.errors = {};
+
+  vm.register = function(form) {
+    vm.submitted = true;
+
+    if(form.$valid) {
+      Auth.createUser({
+        name: vm.user.name,
+        email: vm.user.email,
+        password: vm.user.password
+      })
         .then( function() {
           // Account created, redirect to home
           $location.path('/');
         })
         .catch( function(err) {
           err = err.data;
-          $scope.errors = {};
+          vm.errors = {};
 
           // Update validity of form fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             form[field].$setValidity('mongoose', false);
-            $scope.errors[field] = error.message;
+            vm.errors[field] = error.message;
           });
         });
-      }
-    };
+    }
+  };
 
-    $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
-    };
-  });
+  vm.loginOauth = function(provider) {
+    $window.location.href = '/auth/' + provider;
+  };
+}

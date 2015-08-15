@@ -1,13 +1,16 @@
 'use strict';
 
-angular.module('msMealPlannerApp.calendar', ['ui.calendar', 'msMealPlannerApp.event'])
+angular
+  .module('msMealPlannerApp.calendar', ['ui.calendar', 'msMealPlannerApp.event'])
   .controller('CalendarCtrl', calendarFn);
 
-calendarFn.$inject = ['$scope', 'Event', '$modal', 'templates', 'Restangular'];
+calendarFn.$inject = ['Event', '$modal', 'templates', 'Restangular'];
 
-function calendarFn($scope, Event, $modal, templates, Restangular) {
+function calendarFn(Event, $modal, templates, Restangular) {
 
-  $scope.eventCollection = {
+  var vm = this;
+
+  vm.eventCollection = {
     events: function(start, end, timezone, cb) {
       Event.getList()
         .then(function(response){
@@ -20,7 +23,7 @@ function calendarFn($scope, Event, $modal, templates, Restangular) {
     }
   };
 
-  $scope.uiConfig = {
+  vm.uiConfig = {
     calendar: {
       height: 550,
       header:{
@@ -44,6 +47,7 @@ function calendarFn($scope, Event, $modal, templates, Restangular) {
         animation: true,
         templateUrl: templates.eventModal,
         controller: 'ModalCtrl',
+        controllerAs: 'vm',
         size: 'md',
         resolve: {
           date: function () {

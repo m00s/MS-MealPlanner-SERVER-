@@ -1,73 +1,79 @@
 'use strict';
 
-angular.module('msMealPlannerApp.calendar')
-  .controller('ModalCtrl', function ($scope, $modalInstance, $filter, date, events, Recipe) {
-    $scope.events = organizeMeal(events);
-    $scope.inputDate = date._d;
-    $scope.outputDate = $filter('date')($scope.inputDate, 'fullDate');
-    Recipe.getList().then(function (response) {
-      $scope.recipes = response.plain();
-    });
+angular
+  .module('msMealPlannerApp.calendar')
+  .controller('ModalCtrl', ModalCtrl);
 
-    $scope.close = function () {
-      $modalInstance.close();
-    };
+ModalCtrl.$inject = ['$modalInstance', '$filter', 'date', 'events', 'Recipe'];
 
-    $scope.submit = function () {
-      console.log('Event lunch:',$scope.events[0]);
-      console.log('Event dinner:',$scope.events[1]);
-    };
+function ModalCtrl($modalInstance, $filter, date, events, Recipe) {
+  var vm = this;
 
-    $scope.openDatepicker = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      $scope.opened = true;
-    };
+  vm.events = organizeMeal(events);
+  vm.inputDate = date._d;
+  vm.outputDate = $filter('date')(vm.inputDate, 'fullDate');
+  Recipe.getList().then(function (response) {
+    vm.recipes = response.plain();
+  });
 
-    $scope.today = function() {
-      $scope.outputDate = new Date();
-    };
+  vm.close = function () {
+    $modalInstance.close();
+  };
 
-    $scope.today();
+  vm.submit = function () {
+    console.log('Event lunch:',vm.events[0]);
+    console.log('Event dinner:',vm.events[1]);
+  };
 
-    $scope.clear = function () {
-      $scope.outputDate = null;
-    };
+  vm.openDatepicker = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    vm.opened = true;
+  };
 
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      startingDay: 1
-    };
+  vm.today = function() {
+    vm.outputDate = new Date();
+  };
 
-    function organizeMeal(events) {
-      if(events.length){
-        if(events[0].meal === 'Lunch' && !events[1]){
-          events.push({});
-        }
-        else{
-          if(events[0].meal === 'Dinner'){
-            events.unshift({});
-          }
+  vm.today();
+
+  vm.clear = function () {
+    vm.outputDate = null;
+  };
+
+  vm.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  function organizeMeal(events) {
+    if(events.length){
+      if(events[0].meal === 'Lunch' && !events[1]){
+        events.push({});
+      }
+      else{
+        if(events[0].meal === 'Dinner'){
+          events.unshift({});
         }
       }
-
-      return events;
     }
 
-    $scope.getDayClass = function(date, mode) {
-      if (mode === 'day') {
-        var dayToCheck = new Date(date).setHours(0,0,0,0);
+    return events;
+  }
 
-        for (var i=0;i<$scope.events.length;i++){
-          var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+  vm.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0,0,0,0);
 
-          if (dayToCheck === currentDay) {
-            return $scope.events[i].status;
-          }
+      for (var i=0;i<vm.events.length;i++){
+        var currentDay = new Date(vm.events[i].date).setHours(0,0,0,0);
+
+        if (dayToCheck === currentDay) {
+          return vm.events[i].status;
         }
       }
+    }
 
-      return '';
-    };
-
-  });
+    return '';
+  };
+}

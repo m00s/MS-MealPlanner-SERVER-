@@ -2,9 +2,11 @@
 
 angular
   .module('msMealPlannerApp')
-  .directive('recipeForm', ['Recipe', 'growl', recipeForm ]);
+  .directive('recipeForm', recipeFormDirective);
 
-function recipeForm(Recipe, growl) {
+recipeFormDirective.$inject = ['Recipe', 'growl'];
+
+function recipeFormDirective(Recipe, growl) {
   var directive = {
     templateUrl: 'app/recipe/recipeForm/recipeForm.html',
     restrict: 'EA',

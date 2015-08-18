@@ -12,33 +12,33 @@ var mongoose = require('mongoose');
 
 Recipe.find({}).remove(function() {
   Recipe.create({
-    name: 'Pasta alla carbonara',
+    name: 'Pasta w/ meatballs',
     owner: '55366e779ab9b28305ebbb07',
-    title: 'Pasta alla carbonara',
+    title: 'Pasta w/ meatballs',
     minutes: 30,
     description: 'Metti su l\'acqua e butta la pasta',
     people: 4,
-    type: 'primo',
+    type: 'first serve',
     image: '',
     difficulty: 'easy',
-    ingredients: [{ name: 'Pasta', qta: '500gr' },{name: 'uova', qta:'6'}],
+    ingredients: [{ name: 'Pasta', qta: '500gr' },{name: 'meat', qta:'200gr'}],
     tag: ['pasta','primo','uova'],
     ateAt: [],
     price: 'low',
     createdAt: new Date(),
     updatedAt: new Date()
   }, {
-    name: 'Risotto agli asparagi',
+    name: 'Rice and chicken',
     owner: '55366e779ab9b28305ebbb07',
-    title: 'Risotto agli asparagi',
+    title: 'Rice and chicken',
     minutes: 45,
     description: 'Metti su l\'acqua e butta il riso',
     people: 4,
-    type: 'primo',
+    type: 'first serve',
     image: '',
     difficulty: 'medium',
-    ingredients: [{ name: 'Riso', qta: '400gr' },{name: 'asparagi', qta:'6'}],
-    tag: ['riso','primo','asparagi'],
+    ingredients: [{ name: 'Riso', qta: '400gr' },{name: 'chicken', qta:'1'}],
+    tag: ['rice','first serve','chicken'],
     ateAt: [],
     price: 'medium',
     createdAt: new Date(),
@@ -69,11 +69,13 @@ User.find({}).remove(function() {
 Event.find({}).remove(function () {
   Event.create({
       owner: '55366e779ab9b28305ebbb07',
-      recipe: '556322047802b6af04bf1169',
-      recipeTitle: 'Pasta alla carbonara',
+      recipe: {
+        _id: '556322047802b6af04bf1169',
+        title: 'Pasta w/ meatballs'
+      },
       meal: 'Lunch',
       data: {
-        title: 'Pranzo: Pasta',
+        title: 'Lunch: Pasta',
         start: new Date('2015-08-26'),
         color: 'blue',
         backgroundColor: 'dark',
@@ -81,11 +83,13 @@ Event.find({}).remove(function () {
       }
     }, {
       owner: '55366e779ab9b28305ebbb07',
-      recipe: '556322047802b6af04bf116c',
-      recipeTitle: 'Risotto agli asparagi',
+      recipe: {
+        _id: '556322047802b6af04bf116c',
+        title: 'Rice and chicken'
+      },
       meal: 'Dinner',
       data: {
-        title: 'Cena: Risotto',
+        title: 'Dinner: Rice',
         start: new Date('2015-08-22'),
         color: 'red',
         backgroundColor: 'white',

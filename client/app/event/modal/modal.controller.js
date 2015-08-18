@@ -10,8 +10,15 @@ function ModalCtrl($modalInstance, $filter, date, events, Recipe) {
   var vm = this;
 
   vm.events = organizeMeal(events);
+
+  vm.result = {
+    lunch: vm.events[0] && vm.events[0].recipe,
+    dinner: vm.events[1] && vm.events[1].recipe
+  };
+
   vm.inputDate = date._d;
   vm.outputDate = $filter('date')(vm.inputDate, 'fullDate');
+
   Recipe.getList().then(function (response) {
     vm.recipes = response.plain();
   });
@@ -31,11 +38,9 @@ function ModalCtrl($modalInstance, $filter, date, events, Recipe) {
     vm.opened = true;
   };
 
-  vm.today = function() {
+  vm.today = (function() {
     vm.outputDate = new Date();
-  };
-
-  vm.today();
+  })();
 
   vm.clear = function () {
     vm.outputDate = null;
@@ -76,4 +81,15 @@ function ModalCtrl($modalInstance, $filter, date, events, Recipe) {
 
     return '';
   };
+
+  vm.onRecipeChange = function (meal) {
+    switch(meal){
+      case 'lunch':
+        vm.events[0].recipe = vm.result.lunch;
+        break;
+      case 'dinner':
+        vm.events[1].recipe = vm.result.dinner;
+        break;
+    }
+  }
 }
